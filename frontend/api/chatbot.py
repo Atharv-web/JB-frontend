@@ -43,6 +43,10 @@ def get_chatbot_response(user_input: str) -> str:
     rag_prompt = f"""You are an assistant for question-answering tasks in Hindi.
     Use the below given context to answer question. Read and understand the context carefully.
     {db_context}
+
+    now carefully read the user question:
+    {user_input}
+    
     Provide a correct answer to the question by using the above context.
     Answer:"""
 
