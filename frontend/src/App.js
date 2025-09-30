@@ -35,7 +35,7 @@ function App() {
     setLoading(true)
 
     try{
-      const res = await fetch(`/chat`, {
+      const res = await fetch("api/index/chat", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({query:input}),
