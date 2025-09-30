@@ -45,7 +45,7 @@ function App() {
       setMessages((prev) => [...prev, {sender:"bot", text: data.answer}])
       setBotTypingText("")
     } catch(err) {
-      const errorMessage = {}
+      const errorMessage = {sender:"bot", text:"Error: Could not get response"}
       setMessages((prev) => [...prev, errorMessage])
     } finally{
       setLoading(false)
@@ -62,13 +62,13 @@ function App() {
       <h1>JainBot</h1>
       <div className="chat-box">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`message ${msg.render}`}>
+          <div key={idx} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
         ))}
         {loading && (
           <div className="message-bot">
-            {botTypingText || "Typing"}
+            {botTypingText}
             <span className="typing-dots">
               {botTypingText && botTypingText.length % 3 === 0 ? "." : ""}
               {botTypingText && botTypingText.length % 3 === 1 ? ".." : ""}
