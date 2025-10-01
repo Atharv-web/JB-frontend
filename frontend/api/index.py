@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from chatbot import get_chatbot_response
+from mangum import Mangum
 
 app = FastAPI(title="JainBot")
 
@@ -23,3 +24,5 @@ async def chat_endpoint(req:ChatRequest):
 
     except Exception as e:
         return {"answer": f"Error occured -> {e}"}
+
+handler = Mangum(app)
