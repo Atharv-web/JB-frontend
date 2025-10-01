@@ -12,20 +12,6 @@ function App() {
     chatEndRef.current?.scrollIntoView({behavior: "smooth"})
   }, [messages, botTypingText])
 
-  const simulateTyping = (text) => {
-    return new Promise((resolve) => {
-      let i =0
-      setBotTypingText("")
-      const interval = setInterval(() => {
-        setBotTypingText((prev) => prev + text[i])
-        i++
-        if (i >= text.length){
-          clearInterval(interval)
-          resolve()
-        }
-      }, 200)
-    })
-  }
 
   const handleSend = async() => {
     if (!input.trim()) return
@@ -41,7 +27,7 @@ function App() {
         body: JSON.stringify({query:input}),
       })
       const data = await res.json()
-      await simulateTyping(data.answer)
+      // await simulateTyping(data.answer)
       setMessages((prev) => [...prev, {sender:"bot", text: data.answer}])
       setBotTypingText("")
     } catch(err) {
