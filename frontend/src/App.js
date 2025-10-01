@@ -23,7 +23,7 @@ function App() {
           clearInterval(interval)
           resolve()
         }
-      }, 80)
+      }, 200)
     })
   }
 
