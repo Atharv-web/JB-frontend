@@ -1,7 +1,0 @@
-fastapi
-pydantic
-pinecone
-requests
-langchain-google-genai
-langchain-core
-mangum
